@@ -1,0 +1,59 @@
+
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>情侣汉字生成器</title>
+  <style>
+    body {
+      font-family: "Microsoft YaHei", sans-serif;
+      text-align: center;
+      background-color: #fff0f5;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+    h1 {
+      font-size: 1.5em;
+      margin: 20px;
+      color: #d63384;
+    }
+    #character {
+      font-size: 5em;
+      margin: 20px;
+      color: #ff3366;
+    }
+    button {
+      font-size: 1.2em;
+      padding: 10px 20px;
+      border: none;
+      background-color: #ff6699;
+      color: white;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #ff3366;
+    }
+  </style>
+</head>
+<body>
+  <h1>我只会对你说一个字</h1>
+  <div id="character">❤️</div>
+  <button onclick="generateCharacter()">生成文字</button>
+
+  <script>
+    const characters = ["爱","亲","吻","抱","心","情","蜜","甜","恋","思","念","依","惜","疼","宠","暖","柔","醉","羞","慕","悦","恩","愿","守","陪","依赖","牵","念","想","疼爱","喜欢","深爱","真心","温柔","浪漫","甜蜜","幸福","心动","心跳","心疼","心安","心暖","心爱","心心","心语","心愿","心情","心事","心声","心境","心意","心头","心房","心海","心田","心窝","心灵","心境","心恋","心醉","心痴","心系","心牵","心念","心守","心陪","心宠","心惜","心依","心悦","心慕","心羞","心柔","心暖","心甜","心蜜","心抱","心吻","心亲"];
+
+    function generateCharacter() {
+      const randomIndex = Math.floor(Math.random() * characters.length);
+      document.getElementById("character").textContent = characters[randomIndex];
+    }
+  </script>
+</body>
+</html>
