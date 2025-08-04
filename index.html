@@ -48,7 +48,7 @@
   <button onclick="generateCharacter()">点你想说</button>
 
   <script>
-    const characters = ["爱","不滚","就是不滚","`我爱你","老公","宝贝", "亲爱的", "小可爱", "猪宝", "小猫", "公主", "小宝", "乖乖", "乖宝", "宝宝"];
+    const characters = ["爱","不滚","就是不滚","我爱你","老公","宝贝", "亲爱的", "小可爱", "猪宝", "亲我", "公主", "小宝", "乖乖", "乖宝", "宝宝"];
     function generateCharacter() {
       const randomIndex = Math.floor(Math.random() * characters.length);
       document.getElementById("character").textContent = characters[randomIndex];
