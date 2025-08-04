@@ -46,6 +46,10 @@
   <h1>我将只会对你说一个字</h1>
   <div id="character">❤️</div>
   <button onclick="generateCharacter()">点你想说</button>
+  <button id="recordBtn" style="font-size: 24px; padding: 10px;">
+  🎤 长按录音
+</button>
+<p id="responseText"></p>
 
   <script>
     const characters = ["爱","不滚","就是不滚","我爱你","老公","宝贝", "亲爱的", "小可爱", "猪宝", "亲我", "公主", "小宝", "乖乖", "乖宝", "宝宝"];
@@ -54,5 +58,45 @@
       document.getElementById("character").textContent = characters[randomIndex];
     }
   </script>
+  <script>
+  const recordBtn = document.getElementById('recordBtn');
+  const responseText = document.getElementById('responseText');
+  let mediaRecorder;
+  let isRecording = false;
+
+  navigator.mediaDevices.getUserMedia({ audio: true })
+    .then(stream => {
+      mediaRecorder = new MediaRecorder(stream);
+
+      mediaRecorder.onstart = () => {
+        isRecording = true;
+        responseText.textContent = "录音中...";
+      };
+
+      mediaRecorder.onstop = () => {
+        isRecording = false;
+        responseText.textContent = "这是不被允许的";
+      };
+
+      recordBtn.addEventListener('mousedown', () => {
+        if (!isRecording) mediaRecorder.start();
+      });
+
+      recordBtn.addEventListener('mouseup', () => {
+        if (isRecording) mediaRecorder.stop();
+      });
+
+      recordBtn.addEventListener('touchstart', () => {
+        if (!isRecording) mediaRecorder.start();
+      });
+
+      recordBtn.addEventListener('touchend', () => {
+        if (isRecording) mediaRecorder.stop();
+      });
+    })
+    .catch(err => {
+      responseText.textContent = "无法访问麦克风：" + err.message;
+    });
+</script>
 </body>
 </html>
